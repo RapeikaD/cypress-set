@@ -19,7 +19,6 @@ context ("test for currecny converter", () => {
             cy.wrap(data).as('cData')
         })
     })
-});
 
 it ('Check rate. ', () => {
     let randomCurrency = chance.pickone(curData.rates);
@@ -32,4 +31,5 @@ it ('Check rate. ', () => {
 
 
 
+});
 });

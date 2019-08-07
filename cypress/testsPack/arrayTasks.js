@@ -13,47 +13,48 @@ let newPlanet = {planet: "SomeNewPlanet", radius: 24764, density: 1.64, distance
 
 context("Work with arrays", () => {
 
-});
+    it('Task 1: ', () => {
+        showPlanetsv2(planets);
+    });
 
-it('Task 1: ', () => {
-    showPlanetsv2(planets);
-});
+    it('Task 2: ', () => {
+        planets.map(item => item.solarSystem = true);
+        cy.log(planets);
+        showPlanetsv2(planets)
+    });
 
-it('Task 2: ', () => {
-    planets.map(item => item.solarSystem = true);
-    cy.log(planets);
-    showPlanetsv2(planets)
-});
+    it('Task 3: ', () => {
+        addObject(planets, newPlanet);
+        showPlanetsv2(planets)
+    });
 
-it('Task 3: ', () => {
-    addObject(planets, newPlanet);
-    showPlanetsv2(planets)
-});
+    it('Task 4: ', () => {
+        cy.log(getRadiusSumm(planets));
+    });
 
-it('Task 4: ', () => {
-    getRadiusSumm(planets)
-});
+    it('Task 5:', () => {
+        showPlanetsv2(getPlanetsWithDistance(planets, 5))
+    });
 
-it('Task 5:', () => {
-    showPlanetsv2(getPlanetsWithDistance(planets,5))
-});
+    it('Task 6:', () => {
+        showPlanetsv2(removePlanet(planets, "SomeNewPlanet"));
+        //planets.splice(planets.map(key => key.planet).indexOf("SomeNewPlanet"), 1)
+        //showPlanetsv2(planets)
+    });
 
-it('Task 6:', () => {
-    showPlanetsv2(removePlanet(planets, "SomeNewPlanet"));
-});
+    it('Task 7:', () => {
+        planets.sort(sortByNumbers);
+        showPlanetsv2(planets)
+    });
 
-it('Task 7:', () => {
-    planets.sort(sortByNumbers);
-    showPlanetsv2(planets)
-});
+    it('Task 8:', () => {
+        planets.sort(sortByLetters);
+        showPlanetsv2(planets)
+    });
 
-it('Task 8:', () => {
-    planets.sort(sortByLetters);
-    showPlanetsv2(planets)
-});
-
-it('Task 9:', () => {
-    cy.log(planets.length)
+    it('Task 9:', () => {
+        cy.log(planets.length)
+    });
 });
 
 //primal function to show data from array
@@ -80,15 +81,14 @@ let addObject = function (array, newItem) {
 };
 
 let getRadiusSumm = function (array) {
-    let startFrom = 0;
     let allR2 = array.reduce((collector, item) => {
         return collector + item.radius;
-    }, startFrom);
-    cy.log(allR2)
+    }, 0);
+    return allR2;
 };
 
 let getPlanetsWithDistance = function (allPlanets, targetDistance) {
-    let filteredPlanets = allPlanets.filter(planet => planet.distance > targetDistance );
+    let filteredPlanets = allPlanets.filter(planet => planet.distance > targetDistance);
     return filteredPlanets;
 };
 
@@ -102,17 +102,21 @@ let removePlanet = function (array, planetName) {
 };
 
 let sortByNumbers = function (item1, item2) {
-    if (item1.radius < item2.radius ){
+    if (item1.radius < item2.radius) {
         return 1
-    } if (item1.radius > item2.radius ) {
+    }
+    if (item1.radius > item2.radius) {
         return -1
-    } return 0;
+    }
+    return 0;
 };
 
-let sortByLetters = function (item1,item2) {
-    if (item1.planet < item2.planet ){
+let sortByLetters = function (item1, item2) {
+    if (item1.planet < item2.planet) {
         return 1
-    } if (item1.planet > item2.planet ) {
+    }
+    if (item1.planet > item2.planet) {
         return -1
-    } return 0;
+    }
+    return 0;
 };
