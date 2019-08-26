@@ -14,11 +14,11 @@ let curData= {
 
 
 context ("test for currecny converter", () => {
-    before(() => {
+    /*before(() => {
         cy.fixture('currencyData').then(data => {
             cy.wrap(data).as('cData')
         })
-    })
+    })*/
 
 it ('Check rate. ', () => {
     let randomCurrency = chance.pickone(curData.rates);
