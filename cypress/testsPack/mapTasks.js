@@ -14,6 +14,7 @@ var planetsMap = new Map();
 
 context("Work with [Map]", () => {
 
+
     it('Task 1: ', () => {
         convertIntoMap(planetsArray)
     });
@@ -75,5 +76,6 @@ let transformToKeyValue = function () {
     for(let item in planetInfo) {
       cy.log(item + ": " + planetInfo[item])
     }
+    
 };
 
